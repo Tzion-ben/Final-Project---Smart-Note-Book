@@ -6,4 +6,72 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
 
+
+    <TextView
+        android:id="@+id/welcome_text_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
+        android:text="נא למלא את הפרטים !"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/id_id_input_register"
+        android:layout_width="230dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="48dp"
+        android:background="#DAC4DD"
+        android:ems="10"
+        android:hint="תעודת זהות"
+        android:inputType="textPersonName"
+
+        android:textColorLink="#E8D4D4"
+        app:layout_constraintBottom_toTopOf="@+id/id_email_input_register"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="90dp" />
+
+    <EditText
+        android:id="@+id/id_email_input_register"
+        android:layout_width="230dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="48dp"
+        android:background="#DAC4DD"
+        android:ems="10"
+        android:hint="מייל"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/id_password_input_register"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="90dp" />
+
+    <EditText
+        android:id="@+id/id_password_input_register"
+        android:layout_width="230dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="120dp"
+        android:background="#DAC4DD"
+        android:ems="10"
+        android:hint="סיסמא"
+        android:inputType="textPassword"
+        android:textColorLink="#E8D4D4"
+        app:layout_constraintBottom_toTopOf="@+id/id_button_register"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="90dp" />
+
+    <Button
+        android:id="@+id/id_button_register"
+        android:layout_width="357dp"
+        android:layout_height="66dp"
+        android:layout_marginBottom="84dp"
+        android:text="התחברות !"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

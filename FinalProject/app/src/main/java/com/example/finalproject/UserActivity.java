@@ -22,6 +22,7 @@ public class UserActivity extends AppCompatActivity {
     private List<String> nameActivity;
     private ArrayAdapter<String> adapter;
     private ArrayList<String> selected_item_result;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,9 +47,10 @@ public class UserActivity extends AppCompatActivity {
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String itemSelected = "Selected items:\n";
-                for(int i=0; i<checkBoxes.getCount(); i++){
-                    if(checkBoxes.isItemChecked(i)){
+                for (int i = 0; i < checkBoxes.getCount(); i++) {
+                    if (checkBoxes.isItemChecked(i)) {
                         String nameItem = checkBoxes.getItemAtPosition(i).toString();
                         itemSelected += nameItem + "\n";
                         selected_item_result.add(nameItem);
@@ -56,9 +58,10 @@ public class UserActivity extends AppCompatActivity {
                 }
                 Toast.makeText(UserActivity.this,
                         itemSelected, Toast.LENGTH_SHORT).show();
-            }
-            //returnResult();
 
+                returnResult();
+
+            }
         });
     }
 
