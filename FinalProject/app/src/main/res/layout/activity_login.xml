@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".EntryActivities.LoginActivity">
+
 
     <TextView
         android:id="@+id/welcome_text_login"
@@ -13,12 +14,13 @@
         android:layout_marginTop="92dp"
         android:text="איזה כיף להצטרף !"
         android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/id_name_input_login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
-
 
     <EditText
         android:id="@+id/id_name_input_login"
@@ -31,8 +33,9 @@
         android:inputType="textPersonName"
         android:textColorLink="#E8D4D4"
         app:layout_constraintBottom_toTopOf="@+id/id_id_input_login"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="90dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/id_id_input_login"
@@ -45,8 +48,9 @@
         android:inputType="textPersonName"
         android:textColorLink="#E8D4D4"
         app:layout_constraintBottom_toTopOf="@+id/id_email_input_login"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="90dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/id_email_input_login"
@@ -58,8 +62,9 @@
         android:hint="מייל"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/id_password_input_login"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="90dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/id_password_input_login"
@@ -72,8 +77,9 @@
         android:inputType="textPassword"
         android:textColorLink="#E8D4D4"
         app:layout_constraintBottom_toTopOf="@+id/id_button_login"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="90dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/id_button_login"

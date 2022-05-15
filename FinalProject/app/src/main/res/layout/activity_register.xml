@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".EntryActivities.RegisterActivity">
 
 
     <TextView
@@ -14,6 +14,7 @@
         android:layout_marginTop="92dp"
         android:text="נא למלא את הפרטים !"
         android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/id_id_input_register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,8 +33,9 @@
 
         android:textColorLink="#E8D4D4"
         app:layout_constraintBottom_toTopOf="@+id/id_email_input_register"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="90dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/id_email_input_register"
@@ -45,8 +47,9 @@
         android:hint="מייל"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/id_password_input_register"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="90dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/id_password_input_register"
@@ -59,8 +62,9 @@
         android:inputType="textPassword"
         android:textColorLink="#E8D4D4"
         app:layout_constraintBottom_toTopOf="@+id/id_button_register"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="90dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/id_button_register"

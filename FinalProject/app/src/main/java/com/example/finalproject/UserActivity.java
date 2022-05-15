@@ -1,9 +1,6 @@
 package com.example.finalproject;
 
-import static android.os.Build.VERSION_CODES.R;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +12,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.example.finalproject.R;
 
 public class UserActivity extends AppCompatActivity {
     private Button updateButton;

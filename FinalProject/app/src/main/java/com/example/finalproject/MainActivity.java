@@ -1,43 +1,31 @@
 package com.example.finalproject;
+/***
+ * This class is the Main entry to our app
+ */
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+
+import com.example.finalproject.EntryActivities.LoginActivity;
+import com.example.finalproject.EntryActivities.RegisterActivity;
 
 public class MainActivity extends AppCompatActivity {
-
-    private Button registerButton, loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        registerButton = (Button) findViewById(R.id.id_register_button);
-        loginButton = (Button) findViewById(R.id.id_login_button);
-
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goToRegisterActivity();
-            }
+        /*lead to activity to create a new user*/
+        findViewById(R.id.id_register_button).setOnClickListener(view -> {
+            startActivity(new Intent(this, RegisterActivity.class));
         });
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goToLoginActivity();
-            }
+        /*lead to activity for existing user*/
+        findViewById(R.id.id_login_button).setOnClickListener(view -> {
+            startActivity(new Intent(this, LoginActivity.class));
         });
-}
-
-    private void goToLoginActivity() {
-
-    }
-
-    private void goToRegisterActivity() {
-
     }
 }

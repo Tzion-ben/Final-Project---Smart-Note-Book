@@ -1,10 +1,12 @@
-package com.example.finalproject;
+package com.example.finalproject.EntryActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.finalproject.R;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText passwordInput, nameInput, idInput, emailInput;

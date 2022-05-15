@@ -1,10 +1,12 @@
-package com.example.finalproject;
+package com.example.finalproject.EntryActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.finalproject.R;
 
 public class RegisterActivity extends AppCompatActivity {
     private EditText passwordInput, idInput, emailInput;
@@ -18,7 +20,6 @@ public class RegisterActivity extends AppCompatActivity {
         passwordInput = (EditText) findViewById(R.id.id_password_input_register);
         idInput = (EditText) findViewById(R.id.id_id_input_register);
         emailInput = (EditText) findViewById(R.id.id_email_input_register);
-
         registerButton = (Button) findViewById(R.id.id_button_register);
         
     }

@@ -5,7 +5,7 @@ plugins {
 apply plugin: "realm-android"
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion "30.0.2"
 
     defaultConfig {
@@ -28,6 +28,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+}
+
+realm{
+    syncEnabled = true
 }
 
 dependencies {

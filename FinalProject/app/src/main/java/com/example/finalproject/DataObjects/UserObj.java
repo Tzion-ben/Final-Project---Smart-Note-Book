@@ -1,16 +1,17 @@
-package com.example.finalproject;
+package com.example.finalproject.DataObjects;
 
-public class User {
+public class UserObj {
     private String name;
     private String id;
-    private String passeword;
+    private String password;
     private String email;
 
+    public UserObj() {}
 
-    public User(String name, String id, String passeword, String email) {
+    public UserObj(String name, String id, String password, String email) {
         this.name = name;
         this.id = id;
-        this.passeword = passeword;
+        this.password = password;
         this.email = email;
     }
 
@@ -22,8 +23,8 @@ public class User {
         return id;
     }
 
-    public String getPasseword() {
-        return passeword;
+    public String getPassword() {
+        return password;
     }
 
     public String getEmail() {
