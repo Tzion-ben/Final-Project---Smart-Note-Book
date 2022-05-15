@@ -1,5 +1,7 @@
 package com.example.finalproject;
 
+import static android.os.Build.VERSION_CODES.R;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.example.finalproject.R;
 
 public class UserActivity extends AppCompatActivity {
     private Button updateButton;
@@ -27,6 +30,8 @@ public class UserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+
+
 
         //user & List<String> nameActivity => from last activity
         Intent institute_details = getIntent();
