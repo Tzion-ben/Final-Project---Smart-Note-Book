@@ -2,7 +2,8 @@ plugins {
     id 'com.android.application'
 }
 
-apply plugin: "realm-android"
+    apply plugin: "realm-android"
+
 
 android {
     compileSdkVersion 31
@@ -30,9 +31,9 @@ android {
     }
 }
 
-realm{
-    syncEnabled = true
-}
+    realm {
+        syncEnabled = true
+    }
 
 dependencies {
 

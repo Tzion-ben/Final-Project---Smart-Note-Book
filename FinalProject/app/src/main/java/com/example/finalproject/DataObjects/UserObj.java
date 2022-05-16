@@ -1,6 +1,8 @@
 package com.example.finalproject.DataObjects;
 
-public class UserObj {
+import io.realm.RealmObject;
+
+public class UserObj extends RealmObject {
     private String name;
     private String id;
     private String password;
