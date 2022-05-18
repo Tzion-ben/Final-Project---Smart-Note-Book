@@ -10,43 +10,57 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.finalproject.AccessDB.DB_CRUD;
+import com.example.finalproject.DataObjects.UserObj;
 import com.example.finalproject.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class UserActivity extends AppCompatActivity {
+public class UserActivity extends AppCompatActivity implements Serializable {
+    private DB_CRUD db_crud;
     private Button updateButton;
     private EditText user_name;
-    private String name, user_id;
     private ListView checkBoxes;
-    private List<String> nameActivity;
-    private ArrayAdapter<String> adapter;
-    private ArrayList<String> selected_item_result;
+    private HashMap<String, Integer> preference_activities;
+    private UserObj user;
+
+    private final String tagActivities = "ACTIVITIES";
+    private final String tagUser = "USER";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
+        //user & HashMap<String, Integer> nameActivity => from last activity
+        preference_activities = (HashMap<String, Integer>) getIntent().getSerializableExtra(tagActivities);
+        user = (UserObj) getIntent().getSerializableExtra(tagUser);
 
-
-        //user & List<String> nameActivity => from last activity
-        Intent institute_details = getIntent();
-        user_id = institute_details.getExtras().getString("user_id");
-        name = institute_details.getExtras().getString("user_name");
+        String name = user.getName();
         user_name = (EditText) findViewById(R.id.id_editText);
         user_name.setText(name);
 
         updateButton = (Button) findViewById(R.id.id_update_button);
         checkBoxes = (ListView) findViewById(R.id.id_list_checkBox);
 
-        selected_item_result = new ArrayList<>();
-        adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_multiple_choice, nameActivity);
+        ArrayList<String> items = new ArrayList<>();
+        for(Map.Entry<String, Integer> item :preference_activities.entrySet()){
+            String key = item.getKey();
+            items.add(key);
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_multiple_choice, items);
 
         checkBoxes.setAdapter(adapter);
 
+        ArrayList<String> selected_item = new ArrayList<>();
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,22 +70,38 @@ public class UserActivity extends AppCompatActivity {
                     if (checkBoxes.isItemChecked(i)) {
                         String nameItem = checkBoxes.getItemAtPosition(i).toString();
                         itemSelected += nameItem + "\n";
-                        selected_item_result.add(nameItem);
+                        selected_item.add(nameItem);
                     }
                 }
                 Toast.makeText(UserActivity.this,
                         itemSelected, Toast.LENGTH_SHORT).show();
 
-                returnResult();
+                updateUserChoices(user, selected_item);
 
             }
         });
     }
 
-    private void returnResult(){
-//        Intent return_res = new Intent(this, WatchingQueueActivity.class);
-//        return_res.putExtra("user_id", user_id);
-//        return_res.putStringArrayListExtra("result", selected_item_result);
-//        startActivity(return_res);
+    private void updateUserChoices(UserObj user, ArrayList<String> selected_item) {
+        int i=0;
+        for(Map.Entry<String, Integer> item :preference_activities.entrySet()){
+
+            if(i > selected_item.size() - 1){
+                item.setValue(0);
+                continue;
+            }
+
+            // else..
+            String key = item.getKey();
+            if(key.equals(selected_item.get(i))){
+                item.setValue(1);
+                i++;
+            }
+            else
+                item.setValue(0);
+        }
+
+        db_crud.write_user_preferance_to_db(user, preference_activities);
     }
+
 }

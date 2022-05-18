@@ -6,19 +6,39 @@
     android:layout_height="match_parent"
     tools:context=".View.EntryActivities.RegisterActivity">
 
+    <include layout="@layout/toolbar"/>
 
     <TextView
         android:id="@+id/welcome_text_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
-        android:text="נא למלא את הפרטים !"
+        android:text="איזה כיף להצטרף !"
         android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/id_id_input_register"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.168"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/id_name_input_register"
+        android:layout_width="230dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="48dp"
+        android:background="#DAC4DD"
+        android:ems="10"
+        android:hint="שם משתמש"
+        android:inputType="textPersonName"
+        android:textColorLink="#E8D4D4"
+        app:layout_constraintBottom_toTopOf="@+id/id_id_input_register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_text_register"
+        app:layout_constraintVertical_bias="0.947"
         tools:ignore="MissingConstraints" />
 
     <EditText
@@ -30,7 +50,6 @@
         android:ems="10"
         android:hint="תעודת זהות"
         android:inputType="textPersonName"
-
         android:textColorLink="#E8D4D4"
         app:layout_constraintBottom_toTopOf="@+id/id_email_input_register"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +74,7 @@
         android:id="@+id/id_password_input_register"
         android:layout_width="230dp"
         android:layout_height="46dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="20dp"
         android:background="#DAC4DD"
         android:ems="10"
         android:hint="סיסמא"
@@ -63,6 +82,7 @@
         android:textColorLink="#E8D4D4"
         app:layout_constraintBottom_toTopOf="@+id/id_button_register"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
@@ -70,7 +90,7 @@
         android:id="@+id/id_button_register"
         android:layout_width="357dp"
         android:layout_height="66dp"
-        android:layout_marginBottom="84dp"
+        android:layout_marginBottom="40dp"
         android:text="התחברות !"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"

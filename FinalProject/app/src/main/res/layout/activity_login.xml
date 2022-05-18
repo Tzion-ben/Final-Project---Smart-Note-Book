@@ -7,12 +7,14 @@
     tools:context=".View.EntryActivities.LoginActivity">
 
 
+    <include layout="@layout/toolbar"/>
+
     <TextView
         android:id="@+id/welcome_text_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
-        android:text="איזה כיף להצטרף !"
+        android:text="נא למלא את הפרטים !"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/id_name_input_login"
         app:layout_constraintEnd_toEndOf="parent"
