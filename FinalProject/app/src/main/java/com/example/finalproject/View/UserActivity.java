@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.example.finalproject.R;
 
 import java.util.ArrayList;
 import java.util.List;

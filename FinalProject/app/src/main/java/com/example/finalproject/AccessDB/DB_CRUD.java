@@ -8,10 +8,12 @@ import android.util.Log;
 import com.example.finalproject.DataObjects.UserObj;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmQuery;
+import io.realm.mongodb.User;
 
 public class DB_CRUD {
     /**Static variable reference of a single instance of DB_CRUD*/
@@ -38,7 +40,7 @@ public class DB_CRUD {
         this._realmInstance = Realm.getInstance(_config);
     }
 
-    public void write_user_preferance_to_db(UserObj userObj, ArrayList<String> pref)
+    public void write_user_preferance_to_db(UserObj userObj, HashMap<String,Integer> pref)
     {
         Realm.getInstanceAsync(this._config, new Realm.Callback() {
             @Override
@@ -58,11 +60,20 @@ public class DB_CRUD {
 
     }
 
-    public void Get_User_Preference(String user_id, String feature_id)
+    public HashMap<String,Integer> Get_User_Preference(UserObj userObj, String feature_id)
+    {
+        return null;
+    }
+
+    public void write_sensor_data(HashMap<String,String> sensorData)
     {
 
     }
 
+    public void Get_Sensor_Data(String sensor_id,String Date)
+    {
+
+    }
 
     /*Static method*/
     /*Static method to create instance of Singleton class*/

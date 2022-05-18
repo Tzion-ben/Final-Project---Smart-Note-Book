@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.View;
 /***
  * This class is the Main entry to our app
  */
@@ -9,9 +9,9 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.finalproject.AccessDB.DB_CRUD;
-import com.example.finalproject.DataObjects.UserObj;
-import com.example.finalproject.EntryActivities.LoginActivity;
-import com.example.finalproject.EntryActivities.RegisterActivity;
+import com.example.finalproject.R;
+import com.example.finalproject.View.EntryActivities.LoginActivity;
+import com.example.finalproject.View.EntryActivities.RegisterActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         DB_CRUD db_crud =new DB_CRUD();
-        db_crud.write_user_preferance_to_db(new UserObj("Yossi","2222","2222","Yosi@mail.com"));
+        //db_crud.write_user_preferance_to_db(new UserObj("Yossi","2222","2222","Yosi@mail.com"));
 
 
         /*lead to activity to create a new user*/

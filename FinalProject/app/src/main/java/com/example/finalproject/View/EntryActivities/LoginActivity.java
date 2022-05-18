@@ -1,4 +1,4 @@
-package com.example.finalproject.EntryActivities;
+package com.example.finalproject.View.EntryActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
