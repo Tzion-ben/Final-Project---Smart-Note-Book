@@ -1,7 +1,7 @@
 package com.example.finalproject.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -10,20 +10,17 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.finalproject.AccessDB.DB_CRUD;
+import com.example.finalproject.AccessDB.DBInstance;
 import com.example.finalproject.DataObjects.UserObj;
 import com.example.finalproject.R;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class UserActivity extends AppCompatActivity implements Serializable {
-    private DB_CRUD db_crud;
+    private DBInstance db_instance;
     private Button updateButton;
     private EditText user_name;
     private ListView checkBoxes;
@@ -101,7 +98,7 @@ public class UserActivity extends AppCompatActivity implements Serializable {
                 item.setValue(0);
         }
 
-        db_crud.write_user_preferance_to_db(user, preference_activities);
+        db_instance.write_user_preferance_to_db(user, preference_activities);
     }
 
 }

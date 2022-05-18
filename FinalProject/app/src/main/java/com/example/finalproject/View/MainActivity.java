@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.finalproject.AccessDB.DB_CRUD;
 import com.example.finalproject.R;
 import com.example.finalproject.View.EntryActivities.*;
 
@@ -19,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        DB_CRUD db_crud =new DB_CRUD();
+//        DBInstance db_crud =new DBInstance();
 //        db_crud.write_user_preferance_to_db(new UserObj("Yossi","2222","2222","Yosi@mail.com"));
 
         /*lead to activity to create a new user*/

@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.finalproject.AccessDB.DB_CRUD;
+import com.example.finalproject.AccessDB.DBInstance;
 import com.example.finalproject.DataObjects.UserObj;
 import com.example.finalproject.R;
 
@@ -19,7 +19,7 @@ import java.util.HashMap;
 public class LoginActivity extends AppCompatActivity {
     private EditText passwordInput, nameInput, idInput, emailInput;
     private Button loginButton;
-    private DB_CRUD db_crud;
+    private DBInstance db_instance;
     private final String tagActivities = "ACTIVITIES";
     private final String tagUser = "USER";
 
@@ -40,9 +40,9 @@ public class LoginActivity extends AppCompatActivity {
 
         UserObj user = new UserObj(name, id, password, email);
 
-        // activities from db_crud
+        // activities from db_instance
         ArrayList<String> activities = new ArrayList<>();
-        HashMap<String, Integer> preference_activities = db_crud.Get_User_Preference(user, "1");
+        HashMap<String, Integer> preference_activities = db_instance.Get_User_Preference(user, "1");
         loginButton = (Button) findViewById(R.id.id_button_login);
 
         loginButton.setOnClickListener(new View.OnClickListener() {

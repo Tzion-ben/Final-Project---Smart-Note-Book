@@ -1,20 +1,21 @@
 package com.example.finalproject.View.EntryActivities;
+/**
+ * This Activity will \
+ */
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.finalproject.AccessDB.DBInstance;
 import com.example.finalproject.AccessDB.DB_CRUD;
 import com.example.finalproject.DataObjects.UserObj;
-import com.example.finalproject.View.MainActivity;
 import com.example.finalproject.R;
 
 public class RegisterActivity extends AppCompatActivity {
-    private DB_CRUD db_crud;
     private EditText passwordInput, idInput, emailInput, nameInput;
     private Button registerButton, backButton;
 
@@ -53,13 +54,13 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private void saveUserInDB(UserObj user){
-        // save user to db..
-
-        // after saved
+    /*save new user preferences to the DB*/
+    private void saveUserInDB(UserObj newUser){
+        DB_CRUD.Create_New_User_Preference(newUser);
         goBack();
     }
 
+    /*go back to main entry to the app activity*/
     private void goBack(){
         Intent intent = new Intent(this, com.example.finalproject.View.MainActivity.class);
         startActivity(intent);

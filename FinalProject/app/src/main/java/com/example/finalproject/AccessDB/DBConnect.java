@@ -29,7 +29,7 @@ import io.realm.mongodb.sync.SyncConfiguration;
 public class DBConnect extends Application {
 
     private MongoClient mongoClient;
-    private MongoDatabase users_pref_DB;
+    private MongoDatabase  users_pref_DB;
     private MongoDatabase sensors_data_DB;
 
 
