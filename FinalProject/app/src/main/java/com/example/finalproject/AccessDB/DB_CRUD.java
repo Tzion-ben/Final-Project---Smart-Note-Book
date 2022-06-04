@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class DB_CRUD {
 
-    public static void write_user_preferance_to_db(UserObj userObj, HashMap<String,Integer> pref)
+    public static void write_user_preferance_to_db(UserObj userObj, HashMap<String, Integer> pref)
     {
 //        Realm.getInstanceAsync(this._config, new Realm.Callback() {
 //            @Override
@@ -63,4 +63,8 @@ public class DB_CRUD {
 
     }
 
+    public static UserObj Get_User_Data(String id){
+
+        return null;
+    }
 }

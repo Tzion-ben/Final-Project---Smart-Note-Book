@@ -9,15 +9,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.finalproject.AccessDB.DBInstance;
 import com.example.finalproject.AccessDB.DB_CRUD;
 import com.example.finalproject.DataObjects.UserObj;
 import com.example.finalproject.R;
+import com.example.finalproject.Tools.Validation;
 
 public class RegisterActivity extends AppCompatActivity {
     private EditText passwordInput, idInput, emailInput, nameInput;
-    private Button registerButton, backButton;
+    private Button registerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,6 @@ public class RegisterActivity extends AppCompatActivity {
         UserObj user = new UserObj(name, id, password, email);
 
         registerButton = (Button) findViewById(R.id.id_button_register);
-        backButton = (Button) findViewById(R.id.id_back_button);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,16 +47,20 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goBack();
-            }
+        findViewById(R.id.id_back_button).setOnClickListener(view -> {
+            startActivity(new Intent(this, com.example.finalproject.View.MainActivity.class));
         });
     }
 
     /*save new user preferences to the DB*/
     private void saveUserInDB(UserObj newUser){
+        if(!Validation.isInputValid(newUser.getName(), newUser.getPassword(), newUser.getId(), newUser.getEmail(),
+                nameInput, passwordInput, idInput, emailInput)){
+            Toast.makeText(RegisterActivity.this,
+                    "נסה שנית", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         DB_CRUD.Create_New_User_Preference(newUser);
         goBack();
     }

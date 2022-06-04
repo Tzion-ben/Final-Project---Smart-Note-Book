@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.finalproject.AccessDB.DBInstance;
+import com.example.finalproject.AccessDB.DB_CRUD;
 import com.example.finalproject.DataObjects.UserObj;
 import com.example.finalproject.R;
 
@@ -20,7 +20,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserActivity extends AppCompatActivity implements Serializable {
-    private DBInstance db_instance;
     private Button updateButton;
     private EditText user_name;
     private ListView checkBoxes;
@@ -81,7 +80,7 @@ public class UserActivity extends AppCompatActivity implements Serializable {
 
     private void updateUserChoices(UserObj user, ArrayList<String> selected_item) {
         int i=0;
-        for(Map.Entry<String, Integer> item :preference_activities.entrySet()){
+        for(Map.Entry<String, Integer> item : preference_activities.entrySet()){
 
             if(i > selected_item.size() - 1){
                 item.setValue(0);
@@ -98,7 +97,7 @@ public class UserActivity extends AppCompatActivity implements Serializable {
                 item.setValue(0);
         }
 
-        db_instance.write_user_preferance_to_db(user, preference_activities);
+        DB_CRUD.write_user_preferance_to_db(user, preference_activities);
     }
 
 }

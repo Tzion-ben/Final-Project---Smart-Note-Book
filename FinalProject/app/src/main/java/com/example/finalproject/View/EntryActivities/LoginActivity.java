@@ -7,10 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.finalproject.AccessDB.DBInstance;
+import com.example.finalproject.AccessDB.DB_CRUD;
 import com.example.finalproject.DataObjects.UserObj;
 import com.example.finalproject.R;
+import com.example.finalproject.Tools.Validation;
+import com.example.finalproject.View.UserActivity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,7 +23,6 @@ import java.util.HashMap;
 public class LoginActivity extends AppCompatActivity {
     private EditText passwordInput, nameInput, idInput, emailInput;
     private Button loginButton;
-    private DBInstance db_instance;
     private final String tagActivities = "ACTIVITIES";
     private final String tagUser = "USER";
 
@@ -40,9 +43,8 @@ public class LoginActivity extends AppCompatActivity {
 
         UserObj user = new UserObj(name, id, password, email);
 
-        // activities from db_instance
-        ArrayList<String> activities = new ArrayList<>();
-        HashMap<String, Integer> preference_activities = db_instance.Get_User_Preference(user, "1");
+        // activities from DB_CRUD
+        HashMap<String, Integer> preference_activities = DB_CRUD.Get_User_Preference(user, "1");
         loginButton = (Button) findViewById(R.id.id_button_login);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +61,20 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void goToUserActivity(UserObj user, HashMap<String, Integer> preference_activities){
+
+        if(!Validation.isInputValid(user.getName(), user.getPassword(), user.getId(), user.getEmail(),
+                nameInput, passwordInput, idInput, emailInput)) {
+            Toast.makeText(LoginActivity.this,
+                    "נסה שנית", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(!Validation.isSameIdAndPassword(user)){
+            Toast.makeText(LoginActivity.this,
+                    "סיסמא או ת.ז שגויים, אנא נסו שנית", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         // send user and list of activities to "UserActivity"
         Intent user_intent = new Intent(this, com.example.finalproject.View.UserActivity.class);
 
@@ -66,5 +82,6 @@ public class LoginActivity extends AppCompatActivity {
         user_intent.putExtra(tagActivities, preference_activities);
 
         startActivity(user_intent);
+
     }
 }

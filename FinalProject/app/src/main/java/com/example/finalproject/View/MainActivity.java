@@ -18,9 +18,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        DBInstance db_crud =new DBInstance();
-//        db_crud.write_user_preferance_to_db(new UserObj("Yossi","2222","2222","Yosi@mail.com"));
-
         /*lead to activity to create a new user*/
         findViewById(R.id.id_register_button).setOnClickListener(view -> {
             startActivity(new Intent(this, com.example.finalproject.View.EntryActivities.RegisterActivity.class));
