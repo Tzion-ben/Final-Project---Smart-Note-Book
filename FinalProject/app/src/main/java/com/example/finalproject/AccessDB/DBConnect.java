@@ -44,22 +44,22 @@ public class DBConnect extends Application {
 
         Credentials credentials = Credentials.emailPassword("DanielEppler51@gmail.com","De040894@");
 
-        app.loginAsync(credentials, result -> {
-            if (result.isSuccess()) {
-                Log.v("QUICKSTART", "Successfully authenticated anonymously.");
-                User user = app.currentUser();
-                mongoClient = user.getMongoClient("mongodb-atlas");
-                users_pref_DB = mongoClient.getDatabase("User_Feature_Pref");
-                sensors_data_DB = mongoClient.getDatabase("Sensors_data");
-                MongoCollection<Document> mongoCollection = users_pref_DB.getCollection("users_pref_DB");
-                Map map = new HashMap();
-                map.put("id","1");
-                mongoCollection.insertOne((Document) map);
-
-                // interact with realm using your user object here
-            } else {
-                Log.e("QUICKSTART", "Failed to log in. Error: " + result.getError());
-            }
-        });
+//        app.loginAsync(credentials, result -> {
+//            if (result.isSuccess()) {
+//                Log.v("QUICKSTART", "Successfully authenticated anonymously.");
+//                User user = app.currentUser();
+//                mongoClient = user.getMongoClient("mongodb-atlas");
+//                users_pref_DB = mongoClient.getDatabase("User_Feature_Pref");
+//                sensors_data_DB = mongoClient.getDatabase("Sensors_data");
+//                MongoCollection<Document> mongoCollection = users_pref_DB.getCollection("users_pref_DB");
+//                Map map = new HashMap();
+//                map.put("id","1");
+//                mongoCollection.insertOne((Document) map);
+//
+//                // interact with realm using your user object here
+//            } else {
+//                Log.e("QUICKSTART", "Failed to log in. Error: " + result.getError());
+//            }
+//        });
     }
 }
