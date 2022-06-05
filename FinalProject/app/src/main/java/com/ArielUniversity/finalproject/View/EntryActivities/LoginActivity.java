@@ -1,4 +1,4 @@
-package com.example.finalproject.View.EntryActivities;
+package com.ArielUniversity.finalproject.View.EntryActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,15 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.finalproject.AccessDB.DBInstance;
-import com.example.finalproject.AccessDB.DB_CRUD;
-import com.example.finalproject.DataObjects.UserObj;
-import com.example.finalproject.R;
-import com.example.finalproject.Tools.Validation;
-import com.example.finalproject.View.UserActivity;
+import com.ArielUniversity.finalproject.AccessDB.DB_CRUD;
+import com.ArielUniversity.finalproject.DataObjects.UserObj;
+import com.ArielUniversity.finalproject.R;
+import com.ArielUniversity.finalproject.Tools.Validation;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity {
@@ -56,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
 
         /*go back to main activity*/
         findViewById(R.id.id_back_button).setOnClickListener(view -> {
-            startActivity(new Intent(this, com.example.finalproject.View.MainActivity.class));
+            startActivity(new Intent(this, com.ArielUniversity.finalproject.View.MainActivity.class));
         });
     }
 
@@ -76,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         // send user and list of activities to "UserActivity"
-        Intent user_intent = new Intent(this, com.example.finalproject.View.UserActivity.class);
+        Intent user_intent = new Intent(this, com.ArielUniversity.finalproject.View.UserActivity.class);
 
         user_intent.putExtra(tagUser,  (Serializable) user);
         user_intent.putExtra(tagActivities, preference_activities);

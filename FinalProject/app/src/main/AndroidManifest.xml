@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.finalproject">
+    package="com.ArielUniversity.finalproject">
 
     <application
-        android:name= ".AccessDB.DBConnect"
+        android:name= "com.ArielUniversity.finalproject.AccessDB.DBConnect"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject">
-        <activity android:name=".View.EntryActivities.RegisterActivity"></activity>
-        <activity android:name=".View.EntryActivities.LoginActivity" />
-        <activity android:name=".View.UserActivity" />
-        <activity android:name=".View.MainActivity">
+        <activity android:name="com.ArielUniversity.finalproject.View.EntryActivities.RegisterActivity"></activity>
+        <activity android:name="com.ArielUniversity.finalproject.View.EntryActivities.LoginActivity" />
+        <activity android:name="com.ArielUniversity.finalproject.View.UserActivity" />
+        <activity android:name="com.ArielUniversity.finalproject.View.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

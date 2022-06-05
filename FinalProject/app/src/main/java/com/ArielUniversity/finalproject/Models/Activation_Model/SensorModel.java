@@ -1,4 +1,4 @@
-package com.example.finalproject.Models.Activation_Model;
+package com.ArielUniversity.finalproject.Models.Activation_Model;
 
 import java.util.HashMap;
 import java.util.Map;

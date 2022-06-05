@@ -1,4 +1,4 @@
-package com.example.finalproject.View.EntryActivities;
+package com.ArielUniversity.finalproject.View.EntryActivities;
 /**
  * This Activity will \
  */
@@ -11,11 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.finalproject.AccessDB.DBInstance;
-import com.example.finalproject.AccessDB.DB_CRUD;
-import com.example.finalproject.DataObjects.UserObj;
-import com.example.finalproject.R;
-import com.example.finalproject.Tools.Validation;
+import com.ArielUniversity.finalproject.AccessDB.DB_CRUD;
+import com.ArielUniversity.finalproject.DataObjects.UserObj;
+import com.ArielUniversity.finalproject.R;
+import com.ArielUniversity.finalproject.Tools.Validation;
 
 public class RegisterActivity extends AppCompatActivity {
     private EditText passwordInput, idInput, emailInput, nameInput;
@@ -48,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.id_back_button).setOnClickListener(view -> {
-            startActivity(new Intent(this, com.example.finalproject.View.MainActivity.class));
+            startActivity(new Intent(this, com.ArielUniversity.finalproject.View.MainActivity.class));
         });
     }
 
@@ -61,13 +60,13 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        DB_CRUD.Create_New_User_Preference(newUser);
+        DB_CRUD.createNewUser(newUser);
         goBack();
     }
 
     /*go back to main entry to the app activity*/
     private void goBack(){
-        Intent intent = new Intent(this, com.example.finalproject.View.MainActivity.class);
+        Intent intent = new Intent(this, com.ArielUniversity.finalproject.View.MainActivity.class);
         startActivity(intent);
     }
 }

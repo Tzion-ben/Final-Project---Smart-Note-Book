@@ -1,4 +1,4 @@
-package com.example.finalproject.View;
+package com.ArielUniversity.finalproject.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,9 +10,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.finalproject.AccessDB.DB_CRUD;
-import com.example.finalproject.DataObjects.UserObj;
-import com.example.finalproject.R;
+import com.ArielUniversity.finalproject.AccessDB.DB_CRUD;
+import com.ArielUniversity.finalproject.DataObjects.UserObj;
+import com.ArielUniversity.finalproject.R;
 
 import java.io.Serializable;
 import java.util.ArrayList;

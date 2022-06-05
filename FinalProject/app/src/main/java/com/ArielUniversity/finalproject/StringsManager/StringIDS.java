@@ -1,4 +1,4 @@
-package com.example.finalproject.StringsManager;
+package com.ArielUniversity.finalproject.StringsManager;
 
 /**
  * This class contains

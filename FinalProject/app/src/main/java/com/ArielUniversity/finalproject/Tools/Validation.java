@@ -1,12 +1,10 @@
-package com.example.finalproject.Tools;
+package com.ArielUniversity.finalproject.Tools;
 
 import android.text.TextUtils;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.example.finalproject.AccessDB.DB_CRUD;
-import com.example.finalproject.DataObjects.UserObj;
-import com.example.finalproject.View.EntryActivities.LoginActivity;
+import com.ArielUniversity.finalproject.AccessDB.DB_CRUD;
+import com.ArielUniversity.finalproject.DataObjects.UserObj;
 
 public class Validation {
 

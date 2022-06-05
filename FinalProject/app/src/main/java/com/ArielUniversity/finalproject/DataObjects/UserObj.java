@@ -1,4 +1,4 @@
-package com.example.finalproject.DataObjects;
+package com.ArielUniversity.finalproject.DataObjects;
 
 import io.realm.RealmObject;
 
