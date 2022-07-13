@@ -8,13 +8,12 @@ import com.ArielUniversity.finalproject.DataObjects.UserObj;
 
 public class Validation {
 
-    public static boolean isSameIdAndPassword(UserObj user){
-        UserObj tempUser = DB_CRUD.Get_User_Data(user.getId());
+   public static boolean isSameUserData(UserObj user, UserObj userDB){
 
-        if(!tempUser.getPassword().equals(user.getPassword()))
+        if(!userDB.getPassword().equals(user.getPassword()))
             return false;
 
-        if(!tempUser.getEmail().equals(user.getEmail()))
+        if(!userDB.getEmail().equals(user.getEmail()))
             return false;
 
         return true;
