@@ -66,7 +66,8 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        if(!Validation.isSameIdAndPassword(user)){
+        UserObj userInDB = DB_CRUD.Get_User_Data(user.getId());
+        if(!Validation.isSameUserData(user, userInDB)){
             Toast.makeText(LoginActivity.this,
                     "סיסמא או ת.ז שגויים, אנא נסו שנית", Toast.LENGTH_SHORT).show();
             return;
