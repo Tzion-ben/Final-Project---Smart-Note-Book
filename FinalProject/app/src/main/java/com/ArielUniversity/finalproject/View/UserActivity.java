@@ -23,11 +23,13 @@ public class UserActivity extends AppCompatActivity implements Serializable {
     private Button updateButton;
     private EditText user_name;
     private ListView checkBoxes;
-    private HashMap<String, Integer> preference_activities;
+    private HashMap<String, String> preference_activities;
     private UserObj user;
 
     private final String tagActivities = "ACTIVITIES";
     private final String tagUser = "USER";
+    private final String TRUE                              =                   "1";
+    private final String FALSE                             =                   "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +37,7 @@ public class UserActivity extends AppCompatActivity implements Serializable {
         setContentView(R.layout.activity_user);
 
         //user & HashMap<String, Integer> nameActivity => from last activity
-        preference_activities = (HashMap<String, Integer>) getIntent().getSerializableExtra(tagActivities);
+        preference_activities = (HashMap<String, String>) getIntent().getSerializableExtra(tagActivities);
         user = (UserObj) getIntent().getSerializableExtra(tagUser);
 
         String name = user.getName();
@@ -46,7 +48,7 @@ public class UserActivity extends AppCompatActivity implements Serializable {
         checkBoxes = (ListView) findViewById(R.id.id_list_checkBox);
 
         ArrayList<String> items = new ArrayList<>();
-        for(Map.Entry<String, Integer> item :preference_activities.entrySet()){
+        for(Map.Entry<String, String> item :preference_activities.entrySet()){
             String key = item.getKey();
             items.add(key);
         }
@@ -80,24 +82,24 @@ public class UserActivity extends AppCompatActivity implements Serializable {
 
     private void updateUserChoices(UserObj user, ArrayList<String> selected_item) {
         int i=0;
-        for(Map.Entry<String, Integer> item : preference_activities.entrySet()){
+        for(Map.Entry<String, String> item : preference_activities.entrySet()){
 
             if(i > selected_item.size() - 1){
-                item.setValue(0);
+                item.setValue(FALSE);
                 continue;
             }
 
             // else..
             String key = item.getKey();
             if(key.equals(selected_item.get(i))){
-                item.setValue(1);
+                item.setValue(TRUE);
                 i++;
             }
             else
-                item.setValue(0);
+                item.setValue(FALSE);
         }
 
-        DB_CRUD.write_user_preferance_to_db(user, preference_activities);
+        DB_CRUD.update_user_preference_to_db(user, preference_activities);
     }
 
 }

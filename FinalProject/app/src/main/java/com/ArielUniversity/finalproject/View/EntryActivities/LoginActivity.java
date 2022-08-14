@@ -33,21 +33,19 @@ public class LoginActivity extends AppCompatActivity {
         idInput = (EditText) findViewById(R.id.id_id_input_login);
         emailInput = (EditText) findViewById(R.id.id_email_input_login);
 
-        String password = passwordInput.getText().toString();
-        String id = idInput.getText().toString();
-        String email = emailInput.getText().toString();
-        String name = nameInput.getText().toString();
-
-        UserObj user = new UserObj(name, id, password, email);
-
-        // activities from DB_CRUD
-        HashMap<String, Integer> preference_activities = DB_CRUD.Get_User_Preference(user, "1");
         loginButton = (Button) findViewById(R.id.id_button_login);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToUserActivity(user, preference_activities);
+                String password = passwordInput.getText().toString();
+                String id = idInput.getText().toString();
+                String email = emailInput.getText().toString();
+                String name = nameInput.getText().toString();
+
+                UserObj user = new UserObj(name, id, password, email);
+
+                goToUserActivity(user);
             }
         });
 
@@ -57,29 +55,28 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void goToUserActivity(UserObj user, HashMap<String, Integer> preference_activities){
+    private void goToUserActivity(UserObj user){
 
         if(!Validation.isInputValid(user.getName(), user.getPassword(), user.getId(), user.getEmail(),
-                nameInput, passwordInput, idInput, emailInput)) {
-            Toast.makeText(LoginActivity.this,
-                    "נסה שנית", Toast.LENGTH_SHORT).show();
-            return;
-        }
+                nameInput, passwordInput, idInput, emailInput)) { return; }
 
-        UserObj userInDB = DB_CRUD.Get_User_Data(user.getId());
-        if(!Validation.isSameUserData(user, userInDB)){
-            Toast.makeText(LoginActivity.this,
-                    "סיסמא או ת.ז שגויים, אנא נסו שנית", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        DB_CRUD.loginUser(user);
+//        UserObj userInDB = DB_CRUD.Get_User_Data(user.getId());
+//        if(!Validation.isSameUserData(user, userInDB)){
+//            Toast.makeText(LoginActivity.this,
+//                    "סיסמא או ת.ז שגויים, אנא נסו שנית", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
 
         // send user and list of activities to "UserActivity"
-        Intent user_intent = new Intent(this, com.ArielUniversity.finalproject.View.UserActivity.class);
-
-        user_intent.putExtra(tagUser,  (Serializable) user);
-        user_intent.putExtra(tagActivities, preference_activities);
-
-        startActivity(user_intent);
+//        Intent user_intent = new Intent(this, com.ArielUniversity.finalproject.View.UserActivity.class);
+//
+//        // activities from DB_CRUD
+//        HashMap<String, String> preference_activities = DB_CRUD.Get_User_Preference(user);
+//        user_intent.putExtra(tagUser,  (Serializable) user);
+//        user_intent.putExtra(tagActivities, preference_activities);
+//
+//        startActivity(user_intent);
 
     }
 }

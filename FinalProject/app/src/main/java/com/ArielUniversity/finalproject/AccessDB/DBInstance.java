@@ -7,6 +7,9 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.mongodb.App;
 import io.realm.mongodb.AppConfiguration;
+import io.realm.mongodb.mongo.MongoClient;
+import io.realm.mongodb.mongo.MongoCollection;
+import io.realm.mongodb.mongo.MongoDatabase;
 
 public class DBInstance {
     /**Static variable reference of a single instance of DBInstance*/
@@ -16,10 +19,14 @@ public class DBInstance {
      * Declaring a variable of type Synchronous Reads and Writes on the UI Thread
      * with realm
      */
-    private RealmConfiguration _config        =                 null;
-    private Realm              _realmInstance =                 null;
-    private App                _appInstance   =                 null;
-    private final String       APP_ID         = "smartnotebook-nohyl";
+    private RealmConfiguration _config          =                  null;
+    private Realm              _realmInstance   =                  null;
+    private App                _appInstance     =                  null;
+    private final String       APP_ID           = "smartnotebook-nohyl";
+
+    private MongoDatabase   _mongoDatabase      =                  null;
+    private MongoClient     _mongoClient        =                  null;
+    private MongoCollection _mongoCollection    =                  null;
 
     /**
      * Constructor
@@ -60,5 +67,12 @@ public class DBInstance {
         return this._realmInstance;
     }
     public App getAppInstance()     {return this._appInstance;    }
+
+    public MongoDatabase   getMongoDatabase()   {return this._mongoDatabase;}
+    public MongoClient     getMongoClient()     {return this._mongoClient;  }
+    public MongoCollection getMongoCollection() {return this._mongoCollection;  }
+    public void            setMongoDatabase(MongoDatabase mongoDatabase)       {this._mongoDatabase = mongoDatabase;}
+    public void            setMongoCollection(MongoCollection mongoCollection) {this._mongoCollection = mongoCollection;}
+    public void            setMongoClient(MongoClient mongoClient)             {this._mongoClient = mongoClient;  }
     //end region
 }

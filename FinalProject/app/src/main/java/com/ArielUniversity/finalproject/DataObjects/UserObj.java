@@ -1,8 +1,12 @@
 package com.ArielUniversity.finalproject.DataObjects;
 
+import org.bson.Document;
+
+import java.io.Serializable;
+
 import io.realm.RealmObject;
 
-public class UserObj extends RealmObject {
+public class UserObj extends RealmObject implements Serializable {
     private String name;
     private String id;
     private String password;
@@ -31,6 +35,17 @@ public class UserObj extends RealmObject {
 
     public String getEmail() {
         return email;
+    }
+
+    public Document UserObjToDocument(){
+        Document doc = new Document();
+
+        doc.put("Name",name);
+        doc.put("Id",id);
+        doc.put("Password",password);
+        doc.put("Email",email);
+
+        return doc;
     }
 
 }
