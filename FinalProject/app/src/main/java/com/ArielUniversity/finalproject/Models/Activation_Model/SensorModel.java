@@ -1,9 +1,26 @@
 package com.ArielUniversity.finalproject.Models.Activation_Model;
 
+
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.util.Log;
+
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SensorModel {
+public class SensorModel  extends AppCompatActivity{
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+    }
 
     /*
         * Hashmap will contain the sensor data. The key will be the sensor id - value will be the real
@@ -27,9 +44,6 @@ public class SensorModel {
         There will be list of features functions according to each feature. We will try to make these
         as generic as we can
      */
-
-
-
 
 
 }

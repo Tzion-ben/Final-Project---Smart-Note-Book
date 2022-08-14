@@ -81,8 +81,9 @@ public class DB_CRUD {
     /**
      * Sent an confirm email to the new user
      */
+    /*
     private static void confirmNewUser(){
-        DBInstance dbInstance = DBInstance.getInstance();/*singleton  instance*/
+        DBInstance dbInstance = DBInstance.getInstance();//singleton  instance
 
         dbInstance.getAppInstance().getEmailPassword().confirmUserAsync(token, tokenId, it -> {
             if (it.isSuccess()) {
@@ -94,6 +95,7 @@ public class DB_CRUD {
         });
 
     }
+    */
     //end region
 }
 

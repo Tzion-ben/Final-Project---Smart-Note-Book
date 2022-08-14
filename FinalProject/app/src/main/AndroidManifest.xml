@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ArielUniversity.finalproject">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:usesCleartextTraffic="true"
         android:name= "com.ArielUniversity.finalproject.AccessDB.DBConnect"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,6 +15,7 @@
         <activity android:name="com.ArielUniversity.finalproject.View.EntryActivities.RegisterActivity"></activity>
         <activity android:name="com.ArielUniversity.finalproject.View.EntryActivities.LoginActivity" />
         <activity android:name="com.ArielUniversity.finalproject.View.UserActivity" />
+        <activity android:name="com.ArielUniversity.finalproject.Models.Activation_Model.SensorModel" />
         <activity android:name="com.ArielUniversity.finalproject.View.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
