@@ -30,18 +30,17 @@ public class RegisterActivity extends AppCompatActivity {
         emailInput = (EditText) findViewById(R.id.id_email_input_register);
         nameInput = (EditText) findViewById(R.id.id_name_input_register);
 
-        String password = passwordInput.getText().toString();
-        String id = idInput.getText().toString();
-        String email = emailInput.getText().toString();
-        String name = nameInput.getText().toString();
-
-        UserObj user = new UserObj(name, id, password, email);
-
         registerButton = (Button) findViewById(R.id.id_button_register);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String password = passwordInput.getText().toString();
+                String id = idInput.getText().toString();
+                String email = emailInput.getText().toString();
+                String name = nameInput.getText().toString();
+
+                UserObj user = new UserObj(name, id, password, email);
                 saveUserInDB(user);
             }
         });
@@ -54,11 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
     /*save new user preferences to the DB*/
     private void saveUserInDB(UserObj newUser){
         if(!Validation.isInputValid(newUser.getName(), newUser.getPassword(), newUser.getId(), newUser.getEmail(),
-                nameInput, passwordInput, idInput, emailInput)){
-            Toast.makeText(RegisterActivity.this,
-                    "נסה שנית", Toast.LENGTH_SHORT).show();
-            return;
-        }
+                nameInput, passwordInput, idInput, emailInput)){ return; }
 
         DB_CRUD.createNewUser(newUser);
         goBack();
