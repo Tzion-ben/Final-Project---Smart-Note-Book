@@ -3,6 +3,8 @@ package com.ArielUniversity.finalproject.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -21,7 +23,7 @@ import java.util.Map;
 
 public class UserActivity extends AppCompatActivity implements Serializable {
     private Button updateButton;
-    private EditText user_name;
+    private EditText user_name, degreeNumber;
     private ListView checkBoxes;
     private HashMap<String, String> preference_activities;
     private UserObj user;
@@ -39,7 +41,7 @@ public class UserActivity extends AppCompatActivity implements Serializable {
         //user & HashMap<String, Integer> nameActivity => from last activity
         preference_activities = (HashMap<String, String>) getIntent().getSerializableExtra(tagActivities);
         user = (UserObj) getIntent().getSerializableExtra(tagUser);
-
+        degreeNumber = (EditText)findViewById(R.id.id_editTextNumberDegreeTemperature);
         String name = user.getName();
         user_name = (EditText) findViewById(R.id.id_editText);
         user_name.setText(name);
@@ -94,9 +96,40 @@ public class UserActivity extends AppCompatActivity implements Serializable {
             if(key.equals(selected_item.get(i))){
                 item.setValue(TRUE);
                 i++;
+
+                // temperature sensor
+                if(!key.equals("temperatureSensor"))
+                    continue;
+
+                degreeNumber.setVisibility(View.VISIBLE);
+                degreeNumber.setText("0");
+                degreeNumber.addTextChangedListener(new TextWatcher() {
+
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                        return;
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                        return;
+                    }
+
+                    public void afterTextChanged(Editable s) {
+
+                        final int degreeLimit = Integer.parseInt(degreeNumber.toString());
+                        // save in DB
+                    }
+                });
             }
-            else
+            else{
                 item.setValue(FALSE);
+                if(!key.equals("temperatureSensor"))
+                    continue;
+
+                degreeNumber.setVisibility(View.INVISIBLE);
+            }
+
         }
 
         DB_CRUD.update_user_preference_to_db(user, preference_activities);
