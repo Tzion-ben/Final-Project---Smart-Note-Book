@@ -60,7 +60,10 @@ public class LoginActivity extends AppCompatActivity {
         if(!Validation.isInputValid(user.getName(), user.getPassword(), user.getId(), user.getEmail(),
                 nameInput, passwordInput, idInput, emailInput)) { return; }
 
-        DB_CRUD.loginUser(user);
+       // DB_CRUD.loginUser(user);
+
+
+
 //        UserObj userInDB = DB_CRUD.Get_User_Data(user.getId());
 //        if(!Validation.isSameUserData(user, userInDB)){
 //            Toast.makeText(LoginActivity.this,
@@ -69,14 +72,15 @@ public class LoginActivity extends AppCompatActivity {
 //        }
 
         // send user and list of activities to "UserActivity"
-//        Intent user_intent = new Intent(this, com.ArielUniversity.finalproject.View.UserActivity.class);
+        Intent user_intent = new Intent(this, com.ArielUniversity.finalproject.View.UserActivity.class);
 //
 //        // activities from DB_CRUD
-//        HashMap<String, String> preference_activities = DB_CRUD.Get_User_Preference(user);
-//        user_intent.putExtra(tagUser,  (Serializable) user);
-//        user_intent.putExtra(tagActivities, preference_activities);
-//
-//        startActivity(user_intent);
+      HashMap<String, String> preference_activities = DB_CRUD.Get_User_Preference(user);
+
+       user_intent.putExtra(tagUser,  (Serializable) user);
+     user_intent.putExtra(tagActivities, preference_activities);
+
+        startActivity(user_intent);
 
     }
 }

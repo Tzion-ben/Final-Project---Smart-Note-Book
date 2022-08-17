@@ -88,7 +88,7 @@
         android:layout_width="357dp"
         android:layout_height="66dp"
         android:layout_marginBottom="84dp"
-        android:text="הרשמה !"
+        android:text="התחברות !"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

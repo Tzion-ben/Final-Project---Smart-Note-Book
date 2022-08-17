@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -47,35 +50,57 @@ public class UserActivity extends AppCompatActivity implements Serializable {
         user_name.setText(name);
 
         updateButton = (Button) findViewById(R.id.id_update_button);
-        checkBoxes = (ListView) findViewById(R.id.id_list_checkBox);
+//        checkBoxes = (ListView) findViewById(R.id.id_list_checkBox);
 
-        ArrayList<String> items = new ArrayList<>();
-        for(Map.Entry<String, String> item :preference_activities.entrySet()){
-            String key = item.getKey();
-            items.add(key);
-        }
+        //ArrayList<String> items = new ArrayList<>();
+        //for(Map.Entry<String, String> item :preference_activities.entrySet()){
+          //  String key = item.getKey();
+           // items.add(key);
+       // }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_multiple_choice, items);
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+           //     android.R.layout.simple_list_item_multiple_choice, items);
 
-        checkBoxes.setAdapter(adapter);
+        //checkBoxes.setAdapter(adapter);
+        //ArrayList<String> selected_item = new ArrayList<>();
+        //checkBoxes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+         //   @Override
+          //  public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+           //     selected_item.add(items.get(i));
 
-        ArrayList<String> selected_item = new ArrayList<>();
+          //  }
+        //});
+        CheckBox checkBox_Temp = findViewById(R.id.checkBox_Temp);
+        checkBox_Temp.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                compoundButton.setChecked(b);
+            }
+        });
+
+
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 String itemSelected = "Selected items:\n";
+                itemSelected += "temperatureSensor" + "\n";
+                Toast.makeText(UserActivity.this,
+                        itemSelected, Toast.LENGTH_SHORT).show();
+                /*
+
                 for (int i = 0; i < checkBoxes.getCount(); i++) {
                     if (checkBoxes.isItemChecked(i)) {
                         String nameItem = checkBoxes.getItemAtPosition(i).toString();
-                        itemSelected += nameItem + "\n";
+
                         selected_item.add(nameItem);
                     }
                 }
-                Toast.makeText(UserActivity.this,
-                        itemSelected, Toast.LENGTH_SHORT).show();
 
+
+                 */
+                ArrayList<String> selected_item = new ArrayList<>();
+                selected_item.add("temperatureSensor");
                 updateUserChoices(user, selected_item);
 
             }
@@ -132,7 +157,7 @@ public class UserActivity extends AppCompatActivity implements Serializable {
 
         }
 
-        DB_CRUD.update_user_preference_to_db(user, preference_activities);
+        //DB_CRUD.update_user_preference_to_db(user, preference_activities);
     }
 
 }

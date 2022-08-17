@@ -16,6 +16,7 @@ import com.ArielUniversity.finalproject.StringsManager.StringIDS;
 
 
 import java.util.HashMap;
+import java.util.Map;
 
 import io.realm.mongodb.App;
 import io.realm.mongodb.Credentials;
@@ -82,7 +83,9 @@ public class DB_CRUD {
 
     /*get all user preference */
     public static HashMap<String, String> Get_User_Preference(UserObj userObj){
-        return null;
+        HashMap<String,String> map = new HashMap<>();
+        map.put("temperatureSensor","0");
+        return map;
     }
 
     /*get user preference about a specific sensors*/
