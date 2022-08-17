@@ -177,7 +177,7 @@ public class SensorModel  extends AppCompatActivity{
 
     public void MonitorTemperature() throws IOException {
         //Check user preference to see if this feature is on . Also check temperatue limit from DB
-        float limit = 22.0F;
+        float limit =GetTemperature();
         if(limit < this.GetTemperature())
         {
             this.TurnSwitchOn();
