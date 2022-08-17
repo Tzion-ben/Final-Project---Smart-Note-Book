@@ -16,6 +16,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 
 public class Smart_Switch_Client_Instance {
@@ -33,12 +34,14 @@ public class Smart_Switch_Client_Instance {
             case "Off":
             {
                 TurnSwitchOff();
+                break;
             }
             case "On":
             {
                 TurnSwitchOn();
+                break;
             }
-            break;
+
             default:
                 throw new IllegalStateException("Unexpected value: " + state);
         }
@@ -47,27 +50,27 @@ public class Smart_Switch_Client_Instance {
     private String TurnSwitchOn() throws IOException {
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(this._URL)
+                .baseUrl(this._URL +"On/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         Esp8266Service service = retrofit.create(Esp8266Service.class);
 
-        Call<MyResponse> call = service.createPostRequest(EmptyRequest.INSTANCE);
+        Call<MyResponse> call = service.TurnSwitchOn(EmptyRequest.INSTANCE);
 
         // on below line we are executing our method.
         call.enqueue(new Callback<MyResponse>() {
             @Override
             public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
                 // this method is called when we get response from our api.
-                Log.d("","succes");
+                Log.d("","success to switch up electricity");
             }
 
             @Override
             public void onFailure(Call<MyResponse> call, Throwable t) {
                 // setting text to our text view when
                 // we get error response from API.
-                Log.d("","fail");
+                Log.d("","fail to switch up electricity");
             }
         });
 
@@ -75,6 +78,66 @@ public class Smart_Switch_Client_Instance {
     }
 
 
-    private static void TurnSwitchOff() {
+    private String TurnSwitchOff() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(this._URL + "Off/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        Esp8266Service service = retrofit.create(Esp8266Service.class);
+
+        Call<MyResponse> call = service.TurnSwitchOff(EmptyRequest.INSTANCE);
+
+        // on below line we are executing our method.
+        call.enqueue(new Callback<MyResponse>() {
+            @Override
+            public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
+                // this method is called when we get response from our api.
+                Log.d("","success to switch down electricity");
+            }
+
+            @Override
+            public void onFailure(Call<MyResponse> call, Throwable t) {
+                // setting text to our text view when
+                // we get error response from API.
+                Log.d("","fail to switch down electricity");
+            }
+        });
+
+        return null;
     }
+
+    public float GetTemperature() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(this._URL +"GetTemp/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .build();
+
+        Esp8266Service service = retrofit.create(Esp8266Service.class);
+
+        Call<String> call = service.GetTemperature();
+
+
+        // on below line we are executing our method.
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                // this method is called when we get response from our api.
+                Log.d("","success");
+                System.out.println("Temperature is :" + response.body());
+
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                // setting text to our text view when
+                // we get error response from API.
+                Log.d("","fail to read temperature");
+            }
+        });
+
+        return 0;
+    }
+
 }

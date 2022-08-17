@@ -9,9 +9,11 @@ import android.widget.Toast;
 import com.ArielUniversity.finalproject.DataObjects.UserObj;
 import com.ArielUniversity.finalproject.StringsManager.StringIDS;
 
-import org.bson.BsonDocument;
-import org.bson.Document;
-import org.bson.conversions.Bson;
+
+
+
+
+
 
 import java.util.HashMap;
 
@@ -19,7 +21,14 @@ import io.realm.mongodb.App;
 import io.realm.mongodb.Credentials;
 import io.realm.mongodb.User;
 import io.realm.mongodb.mongo.iterable.FindIterable;
+import io.realm.mongodb.mongo.iterable.MongoCursor;
+
 import static io.realm.Realm.getApplicationContext;
+
+
+import org.bson.Document;
+
+
 
 public class DB_CRUD {
 
@@ -42,6 +51,7 @@ public class DB_CRUD {
 
         Document newUserPref = new Document().append(currentUserObj.getId() , userPref);
 
+        String CurrentRealmUserId = currentUserRealm.getId();
         dbInstance.getMongoCollection().insertOne(newUserPref).getAsync(result -> {
             if(result.isSuccess()){
                 Log.v("inserting ","Successfully insert new pref");
@@ -114,7 +124,11 @@ public class DB_CRUD {
         dbInstance.setMongoDatabase(dbInstance.getMongoClient().getDatabase(USERS_DB));
         dbInstance.setMongoCollection(dbInstance.getMongoDatabase().getCollection(USERS_REGISTER_DATA_DB_COLLECTION));
 
-        Document queryFilter = new Document().append(currentUserObj.getId() , currentUserObj);
+
+        Document queryFilter  = new Document("_id", "62f83a10c27961d2a3dd192a");
+
+       // MongoCursor cursor = dbInstance.getMongoCollection().
+       Document actual = (Document) dbInstance.getMongoCollection().find(queryFilter).limit(1).iterator();
 
         dbInstance.getMongoCollection().findOne().getAsync(result -> {
             if(result.isSuccess()){
@@ -122,6 +136,7 @@ public class DB_CRUD {
                 Document resDoc = (Document) result.get();
             }else{
                 Log.v("findOne ","Failed find one"+result.getError().toString());
+
             }
         });;
 
@@ -177,12 +192,12 @@ public class DB_CRUD {
                     /*current logged Realm user*/
                     User currentUserRealm =  dbInstance.getAppInstance().currentUser();
 
-
-                    if(Get_User_Data(currentUserObj , currentUserRealm) != null)/*if it's a new user have to write a new pref HashMap*/
+                    UserObj userInDB=  Get_User_Data(currentUserObj, currentUserRealm) ;
+                    if(userInDB == null)/*if it's a new user have to write a new pref HashMap*/
                     {
-
+                        Write_User_To_DB(currentUserObj,currentUserRealm);
                     }
-                    write_user_preference_to_db(currentUserObj ,currentUserRealm, createValue());
+
                 } else {
                     Log.e("loginUser method", "Failed to login user: " + result.getError().getErrorMessage());
                     Toast.makeText(getApplicationContext(),
@@ -191,6 +206,30 @@ public class DB_CRUD {
                 return;
             }
         });
+    }
+
+    private static void Write_User_To_DB(UserObj currentUserObj, User currentUserRealm)
+    {
+        DBInstance dbInstance = DBInstance.getInstance();/*singleton  instance*/
+
+        dbInstance.setMongoClient(currentUserRealm.getMongoClient(MONGODB_ATLAS));
+        dbInstance.setMongoDatabase(dbInstance.getMongoClient().getDatabase(USERS_DB));
+        dbInstance.setMongoCollection(dbInstance.getMongoDatabase().getCollection(USERS_REGISTER_DATA_DB_COLLECTION));
+
+
+
+        Document newUser = new Document().append(currentUserObj.getId() , currentUserObj);
+        dbInstance.getMongoCollection().insertOne(currentUserObj);
+
+        dbInstance.getMongoCollection().insertOne(currentUserObj).getAsync(result -> {
+            if(result.isSuccess()){
+                Log.v("inserting ","Successfully insert new user to DB");
+                write_user_preference_to_db(currentUserObj ,currentUserRealm, createValue());
+            }else{
+                Log.v("inserting ","Failed insert new user to DB"+result.getError().toString());
+            }
+        });
+
     }
 
 
@@ -209,6 +248,7 @@ public class DB_CRUD {
             }
             return;
         });
+
     }
 
     //end region

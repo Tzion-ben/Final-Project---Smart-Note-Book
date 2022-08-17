@@ -19,9 +19,11 @@ import android.os.Bundle;
 import android.provider.AlarmClock;
 import android.util.Log;
 
+import com.ArielUniversity.finalproject.DataObjects.UserObj;
 import com.ArielUniversity.finalproject.Models.Activation_Model.SensorModel;
 import com.ArielUniversity.finalproject.Models.Activation_Model.Smart_Switch_Client_Instance;
 import com.ArielUniversity.finalproject.R;
+import com.ArielUniversity.finalproject.Threads.TempMonitoringThread;
 import com.ArielUniversity.finalproject.View.EntryActivities.*;
 
 import java.io.IOException;
@@ -37,13 +39,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Smart_Switch_Client_Instance SSCI= new Smart_Switch_Client_Instance();
-        try {
-            SSCI.TurnSmartSwitchOnAndOff("Off");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
+        TempMonitoringThread p = new TempMonitoringThread(1000,new SensorModel());
+        p.run();
 
         /*lead to activity to create a new user*/
         findViewById(R.id.id_register_button).setOnClickListener(view -> {

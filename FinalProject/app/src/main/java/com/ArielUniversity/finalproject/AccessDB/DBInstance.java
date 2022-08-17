@@ -35,10 +35,12 @@ public class DBInstance {
      */
     private DBInstance()
     {
+
         this._config = new RealmConfiguration.Builder()
                 .allowQueriesOnUiThread(true)
                 .allowWritesOnUiThread(true)
                 .build();
+
         this._realmInstance = Realm.getInstance(_config);
 
         /**Will create an instance of the Realm Application in the Android Studio
